@@ -1,0 +1,111 @@
+// {
+//     "version": "2.0.0",
+//     "tasks": [
+//         {
+//             "label": "Run Java with input.txt",
+//             "type": "shell",
+//             "command": "javac Main.java; Get-Content input.txt | java Main | Out-File output.txt",
+            
+//             "options": {
+//                 "shell": {
+//                     "executable": "powershell.exe"
+//                 }
+//             },
+//             "group": {
+//                 "kind": "build",
+//                 "isDefault": true
+//             },
+//             "problemMatcher": [],
+//             "presentation": {
+//                 "reveal": "always"
+//             }
+//         }
+//     ]
+// }
+
+
+// {
+//     "version": "2.0.0",
+//     "tasks": [
+//         {
+//             "label": "Run Java with input.txt",
+//             "type": "shell",
+//             "command": "javac Main.java; Get-Content input.txt | java Main | Out-File output.txt",
+//             "options": {
+//                 "shell": {
+//                     "executable": "powershell.exe"
+//                 }
+//             },
+//             "presentation": {
+//                 "reveal": "never",
+//                 "focus": false,
+//                 "panel": "dedicated",
+//                 "showReuseMessage": false,
+//                 "clear": true
+//             },
+//             "group": {
+//                 "kind": "build",
+//                 "isDefault": true
+//             },
+//             "problemMatcher": []
+//         }
+//     ]
+// }
+
+
+// {
+//     "version": "2.0.0",
+//     "tasks": [
+//         {
+//             "label": "Compile and Run Java with input.txt",
+//             "type": "shell",
+//             "command": "javac Main.java; if ($?) { Get-Content input.txt | java Main | Out-File output.txt }",
+//             "options": {
+//                 "shell": {
+//                     "executable": "powershell.exe"
+//                 }
+//             },
+//             "presentation": {
+//                 "reveal": "never",
+//                 "focus": false,
+//                 "panel": "dedicated",
+//                 "showReuseMessage": false,
+//                 "clear": true
+//             },
+//             "group": {
+//                 "kind": "build",
+//                 "isDefault": true
+//             },
+//             "problemMatcher": []
+//         }
+//     ]
+// }
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile and Run Java (log output or error)",
+            "type": "shell",
+            "command": "javac Main.java 2>&1 | Out-File output.txt; if ($?) { Get-Content input.txt | java Main 2>&1 | Out-File -Append output.txt }",
+            "options": {
+                "shell": {
+                    "executable": "powershell.exe"
+                }
+            },
+            "presentation": {
+                "reveal": "never",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
+
